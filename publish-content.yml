@@ -1,0 +1,65 @@
+name: Publish Content to Hub
+
+on:
+  # Trigger manually from GitHub Actions UI with a content payload
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path for the new file (e.g. linkedin-posts/ai-economics/pilot-trap.mdx)'
+        required: true
+        type: string
+      file_content:
+        description: 'Full MDX content of the file'
+        required: true
+        type: string
+      commit_message:
+        description: 'Commit message'
+        required: false
+        default: 'Add new content from Claude'
+        type: string
+
+  # OR trigger via repository_dispatch (for API-based publishing)
+  repository_dispatch:
+    types: [publish-content]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Write content file (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p "$(dirname "${{ github.event.inputs.file_path }}")"
+          cat << 'CONTENT_EOF' > "${{ github.event.inputs.file_path }}"
+          ${{ github.event.inputs.file_content }}
+          CONTENT_EOF
+
+      - name: Write content file (repository_dispatch)
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          FILE_PATH="${{ github.event.client_payload.file_path }}"
+          mkdir -p "$(dirname "$FILE_PATH")"
+          echo '${{ toJSON(github.event.client_payload.file_content) }}' | python3 -c "
+          import sys, json
+          content = json.load(sys.stdin)
+          print(content)
+          " > "$FILE_PATH"
+
+      - name: Update docs.json navigation
+        run: |
+          echo "⚠️  Remember to manually update docs.json navigation if this is a new page."
+          echo "New file: ${{ github.event.inputs.file_path || github.event.client_payload.file_path }}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "Content Factory Bot"
+          git config user.email "bot@lyratech.ai"
+          git add -A
+          git commit -m "${{ github.event.inputs.commit_message || github.event.client_payload.commit_message || 'Add new content from Claude' }}"
+          git push

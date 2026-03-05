@@ -1,0 +1,127 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Kate's Content Hub",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#6B4FBB",
+    "light": "#A78BFA",
+    "dark": "#4C1D95",
+    "anchors": {
+      "from": "#6B4FBB",
+      "to": "#A78BFA"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "LyraTech AI",
+      "url": "https://lyratech.ai"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/katerynastetsiuk/"
+  },
+  "tabs": [
+    {
+      "name": "LinkedIn Posts",
+      "url": "linkedin-posts"
+    },
+    {
+      "name": "Articles",
+      "url": "articles"
+    },
+    {
+      "name": "Topic Ideas",
+      "url": "topic-ideas"
+    },
+    {
+      "name": "Content Calendar",
+      "url": "content-calendar"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "AI as Economics",
+      "icon": "chart-line",
+      "url": "linkedin-posts/ai-economics"
+    },
+    {
+      "name": "Operating Models",
+      "icon": "diagram-project",
+      "url": "linkedin-posts/operating-models"
+    },
+    {
+      "name": "Scaling Beyond Experiments",
+      "icon": "rocket",
+      "url": "linkedin-posts/scaling-beyond-experiments"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": ["introduction"]
+    },
+    {
+      "group": "LinkedIn Posts",
+      "pages": [
+        {
+          "group": "AI as Economics",
+          "pages": ["linkedin-posts/ai-economics/index"]
+        },
+        {
+          "group": "Operating Models & Governance",
+          "pages": ["linkedin-posts/operating-models/index"]
+        },
+        {
+          "group": "Scaling Beyond Experiments",
+          "pages": ["linkedin-posts/scaling-beyond-experiments/index"]
+        }
+      ]
+    },
+    {
+      "group": "Articles",
+      "pages": [
+        {
+          "group": "AI as Economics",
+          "pages": ["articles/ai-economics/index"]
+        },
+        {
+          "group": "Operating Models & Governance",
+          "pages": ["articles/operating-models/index"]
+        },
+        {
+          "group": "Scaling Beyond Experiments",
+          "pages": ["articles/scaling-beyond-experiments/index"]
+        }
+      ]
+    },
+    {
+      "group": "Topic Ideas",
+      "pages": [
+        {
+          "group": "AI as Economics",
+          "pages": ["topic-ideas/ai-economics/index"]
+        },
+        {
+          "group": "Operating Models & Governance",
+          "pages": ["topic-ideas/operating-models/index"]
+        },
+        {
+          "group": "Scaling Beyond Experiments",
+          "pages": ["topic-ideas/scaling-beyond-experiments/index"]
+        }
+      ]
+    },
+    {
+      "group": "Content Calendar",
+      "pages": ["content-calendar/index"]
+    }
+  ],
+  "footerSocials": {
+    "linkedin": "https://www.linkedin.com/in/katerynastetsiuk/"
+  }
+}
