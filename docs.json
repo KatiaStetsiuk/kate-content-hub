@@ -67,15 +67,24 @@
         "groups": [
           {
             "group": "AI as Economics",
-            "pages": ["topic-ideas/ai-economics/index"]
+            "pages": [
+              "topic-ideas/ai-economics/index",
+              "topic-ideas/ai-economics/mckinsey-value-gap-2025"
+            ]
           },
           {
             "group": "Operating Models & Governance",
-            "pages": ["topic-ideas/operating-models/index"]
+            "pages": [
+              "topic-ideas/operating-models/index",
+              "topic-ideas/operating-models/workflow-redesign-roi-driver"
+            ]
           },
           {
             "group": "Scaling Beyond Experiments",
-            "pages": ["topic-ideas/scaling-beyond-experiments/index"]
+            "pages": [
+              "topic-ideas/scaling-beyond-experiments/index",
+              "topic-ideas/scaling-beyond-experiments/agentic-ai-scaling-gap"
+            ]
           }
         ]
       },
